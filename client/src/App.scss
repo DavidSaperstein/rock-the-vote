@@ -1,0 +1,19 @@
+@import './variables.scss';
+
+* {
+	margin: 0;
+	font-size: 10px;
+	box-sizing: border-box;
+};
+
+.app {
+	@include fill-screen-bottomless;
+	background: url('./assets/edu-lauton-TyQ-0lPp6e4-unsplash.jpg');
+	background-size: cover;
+	background-position: right;
+	background-repeat: no-repeat;
+
+	@include small-media {
+		background-position: 95% bottom;
+	}
+}

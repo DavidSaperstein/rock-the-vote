@@ -1,0 +1,41 @@
+@mixin center-h {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin center-v {
+	@include center-h;
+	flex-direction: column;
+}
+
+@mixin fill-screen-bottomless {
+	display: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	min-height: 100vh;
+}
+
+$phone: 450px;
+$tablet: 700px;
+
+@mixin small-media {
+	@media screen and (max-width: $phone) { @content };
+}
+
+@mixin large-media {
+	@media screen and (min-width: $phone) { @content };
+}
+
+@mixin tablet-only {
+	@media screen and (min-width: $phone) and (max-width: $tablet) { @content };
+}
+
+@mixin tablet-and-smaller {
+	@media screen and (max-width: $tablet) { @content };
+}
+
+@mixin tablet-and-larger {
+	@media screen and (min-width: $tablet) { @content };
+}
