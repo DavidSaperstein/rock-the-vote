@@ -4,6 +4,10 @@ const cors = require('cors')
 const express = require('express')
 const path = require('path')
 const serveStatic = require('serve-static')
+const morgan = require('morgan')
+const mongoose = require('mongoose')
+const expressJwt = require('express-jwt')
+
 
 const server = express()
 
@@ -29,6 +33,25 @@ const corsOptions = {
 server.use(express.json())
 server.use(cors(corsOptions.origin))
 server.use(serveStatic(__dirname + '/client/build'))
+server.use(morgan('dev'))
+
+//mongoose.connect goes here
+mongoose.connect(
+  'mongodb://localhost:27017/helperbeetus',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  },
+  () => console.log('Connected to the DB')
+)
+
+//server.use routes go here
+// server.use('/auth', require('./routes/authRouter.js'))
+// server.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['sha1', 'RS256', 'HS256']}))
+// server.use('/api/issue', require('./routes/issueRouter.js'))
+// server.use('/api/comment', require('./routes/commentRouter.js'))
 
 server.get("/api", (req, res) => {
 	res.send({ message: "Hello World!" })
