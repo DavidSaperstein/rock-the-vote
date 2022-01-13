@@ -36,26 +36,35 @@ server.use(serveStatic(__dirname + '/client/build'))
 server.use(morgan('dev'))
 
 //mongoose.connect goes here
-mongoose.connect(
-  'mongodb://localhost:27017/helperbeetus',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  },
-  () => console.log('Connected to the DB')
+// mongoose.connect(
+//   'mongodb://localhost:27017/rock-the-vote',
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+//   },
+//   () => console.log('Connected to the DB')
+// )
+
+mongoose.connect(process.env.MONGODB_URI, 
+	{   useNewUrlParser: true,
+			useUnifiedTopology: true,
+			useCreateIndex: true,
+			useFindAndModify: false 
+	}
 )
 
-//server.use routes go here
-// server.use('/auth', require('./routes/authRouter.js'))
-// server.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['sha1', 'RS256', 'HS256']}))
-// server.use('/api/issue', require('./routes/issueRouter.js'))
-// server.use('/api/comment', require('./routes/commentRouter.js'))
-
-server.get("/api", (req, res) => {
+server.get("/hello", (req, res) => {
 	res.send({ message: "Hello World!" })
 })
+
+//server.use routes go here
+server.use('/auth', require('./routes/authRouter.js'))
+server.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['sha1', 'RS256', 'HS256']}))
+server.use('/api/issue', require('./routes/issueRouter.js'))
+server.use('/api/comment', require('./routes/commentRouter.js'))
+
 
 server.use((err, req, res, next) => {
 	if (err) {
