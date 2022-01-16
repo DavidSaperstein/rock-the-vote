@@ -8,7 +8,7 @@ export default function Post(props){
 
   const { issueId } = useParams()
 
-  const { currentIssue, getIssueById, issueState, commentState, getComments} = useContext(IssueContext)
+  const { currentIssue, getIssueById, commentState, getComments} = useContext(IssueContext)
 
   // const title = issueState.find(issue => issue._id === issueId).title
   // const description = issueState.find(issue => issue._id === issueId).description

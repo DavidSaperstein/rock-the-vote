@@ -16,15 +16,7 @@ export default function PostForm(props){
 
   
   let history = useHistory()
-  
-  // function handleChange(e){
-  //   const {name, value} = e.target
-  //   setInputs(prevInputs => ({
-  //     ...prevInputs,
-  //     [name]: value
-  //   }))
-  // }
-  
+    
   const handleSubmit = (e) => {
     e.preventDefault()
     let dateAdded = new Date().toString()

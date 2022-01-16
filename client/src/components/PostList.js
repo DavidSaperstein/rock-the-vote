@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function PostList(props){
 
-  const { getIssues, getComments, issueState, editIssue } = useContext(IssueContext)
+  const { getIssues, issueState, editIssue } = useContext(IssueContext)
   const { user } = useContext(UserContext)
 
   useEffect(() => {

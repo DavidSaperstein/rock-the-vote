@@ -7,12 +7,10 @@ import PostList from './components/PostList.js'
 import PostForm from './components/PostForm.js'
 import Post from './components/Post.js'
 import { UserContext } from './context/UserProvider.js'
-import { IssueContext } from './context/IssueProvider.js'
 
 
 export default function App(){
   const { user, token, logout, login, signup, addIssue } = useContext(UserContext)
-  const { getIssues } = useContext(IssueContext)
 
   return (
     <div className="app">

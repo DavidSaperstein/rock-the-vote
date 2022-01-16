@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import { UserContext } from './UserProvider.js'
 
 export const IssueContext = React.createContext()
@@ -9,7 +9,7 @@ export default function IssueProvider(props){
   const [issueState, setIssueState] = useState([])
   const [currentIssue, setCurrentIssue] = useState({})
   const [commentState, setCommentState] = useState([])
-  const { userAxios, user, userState, setUserState, getUserIssues } = useContext(UserContext)
+  const { userAxios, getUserIssues } = useContext(UserContext)
 
   function getIssues(){
     userAxios.get("/api/issue")
@@ -57,11 +57,6 @@ export default function IssueProvider(props){
     })
     .catch(err => console.error(err))
   }
-
-  // useEffect(() => {
-  //   getIssues()
-  // }, [])
-
 
   return (
     <IssueContext.Provider 
