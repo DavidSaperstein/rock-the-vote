@@ -5,7 +5,7 @@ const express = require('express')
 const path = require('path')
 const serveStatic = require('serve-static')
 const morgan = require('morgan')
-const mongoose = require('mongoose')
+const connectDB = require('./database.js')
 const expressJwt = require('express-jwt')
 
 
@@ -47,13 +47,15 @@ server.use(morgan('dev'))
 //   () => console.log('Connected to the DB')
 // )
 
-mongoose.connect(process.env.MONGODB_URI, 
-	{   useNewUrlParser: true,
-			useUnifiedTopology: true,
-			useCreateIndex: true,
-			useFindAndModify: false 
-	}
-)
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/rock-the-vote', 
+// 	{   useNewUrlParser: true,
+// 			useUnifiedTopology: true,
+// 			useCreateIndex: true,
+// 			useFindAndModify: false 
+// 	}
+// )
+
+connectDB()
 
 server.get("/hello", (req, res) => {
 	res.send({ message: "Hello World!" })

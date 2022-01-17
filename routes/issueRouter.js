@@ -4,6 +4,7 @@ const Issue = require('../models/issue.js')
 
 //get all issues
 issueRouter.get("/", (req, res, next) => {
+  console.log('this hit the issue router')
   Issue.find((err, issues) => {
     if(err){
       res.status(500)
@@ -15,6 +16,7 @@ issueRouter.get("/", (req, res, next) => {
 
 //get issues by user id
 issueRouter.get("/user", (req, res, next) => {
+  console.log('this hit the issue router')
   Issue.find({ user: req.user._id }, (err, issues) => {
     if(err) {
     res.status(500)
@@ -26,6 +28,7 @@ issueRouter.get("/user", (req, res, next) => {
 
 //get issue by issue id
 issueRouter.get("/:issueId", (req, res, next) => {
+  console.log('this hit the issue router')
   Issue.findById(req.params.issueId, (err, issue) => {
     if(err) {
       res.status(500)
@@ -37,6 +40,7 @@ issueRouter.get("/:issueId", (req, res, next) => {
 
 //add new issue
 issueRouter.post("/", (req, res, next) => {
+  console.log('this hit the issue router')
   Issue.findOne({ title: req.body.title }, (err, issue) => {
     if(issue){
       res.status(403)

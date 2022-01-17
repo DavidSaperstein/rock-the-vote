@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 export const UserContext = React.createContext()
@@ -24,18 +25,23 @@ export default function UserProvider(props){
   }
 
   const [userState, setUserState] = useState(initState)
+  let history = useHistory()
 
   function signup(credentials){
     axios.post(baseURL + "/auth/signup", credentials)
       .then(res => {
+        console.log(res)
         const { user, token } = res.data
-        localStorage.setItem("token", token)
-        localStorage.setItem("user", JSON.stringify(user))
-        setUserState(prevUserState => ({
-          ...prevUserState,
-          user,
-          token
-        }))
+        if (user && token) {
+          localStorage.setItem("token", token)
+          localStorage.setItem("user", JSON.stringify(user))
+          setUserState(prevUserState => ({
+            ...prevUserState,
+            user,
+            token
+          }))
+          .then(history.push('/issues'))
+        }
       })
       .catch(err => handleAuthErr(err.response.data.errMsg))
   }
