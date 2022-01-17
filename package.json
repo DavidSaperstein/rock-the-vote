@@ -1,9 +1,9 @@
 {
-  "name": "flashcards",
+  "name": "reddit-rock-the-vote",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:MeghanBomberger/flashcards.git",
-  "author": "Meghan Bomberger <meghanbomberger@gmail.com>",
+  "repository": "git@https://github.com/DavidSaperstein/rock-the-vote",
+  "author": "David Saperstein <d.h.saperstein@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon server.js",
