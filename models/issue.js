@@ -4,19 +4,19 @@ const Schema = mongoose.Schema
 const issueSchema = new mongoose.Schema({
   title: {
     type: String,
-    // required: true,
+    required: true,
     unique: true
   },
   description: {
-    type: String
-    // required: true
+    type: String,
+    required: true
   },
   imgUrl: {
     type: String,
   },
   dateAdded: {
     type: String,
-    // required: true
+    required: true
   },
   upvotes: {
     type: Array,
@@ -26,8 +26,8 @@ const issueSchema = new mongoose.Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-    // required: true
+    ref: "User",
+    required: true
   },
   score: {
     type: Number
