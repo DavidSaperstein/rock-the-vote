@@ -28,6 +28,7 @@ export default function UserProvider(props){
   let history = useHistory()
 
   function signup(credentials){
+    console.log("credentials", credentials)
     axios.post(baseURL + "/auth/signup", credentials)
       .then(res => {
         console.log(res)

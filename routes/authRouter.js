@@ -1,14 +1,18 @@
 const express = require('express')
 const authRouter = express.Router()
-const User = require('../models/issue.js')
+const User = require('../models/user.js')
 const jwt = require('jsonwebtoken')
 
 const secret = process.env.SECRET || "is it secret enough"
 
+console.log("HELLO?")
+
 //Signup
 authRouter.post("/signup", (req, res, next) => {
-  console.log('hit this route')
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+  console.log('hit this route', req.body)
   User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+    console.log({user, err})
     if(err){
       res.status(500)
       return next(err)
@@ -19,6 +23,7 @@ authRouter.post("/signup", (req, res, next) => {
     }
     const newUser = new User(req.body)
     newUser.save((err, savedUser) => {
+      console.log(savedUser)
       if(err){
         return next(err)
       }

@@ -3,7 +3,7 @@ import React from 'react'
 export default function AuthForm(props){
   const {
     handleChange,
-    handleSubmit,
+    handleLogin,
     btnText,
     inputs: {
       username,
@@ -12,7 +12,7 @@ export default function AuthForm(props){
   } = props
 
   return (
-    <form className='auth-form' onSubmit={handleSubmit}>
+    <form className='auth-form' onSubmit={handleLogin}>
       <input
         type="text"
         value={username}

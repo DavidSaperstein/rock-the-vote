@@ -19,6 +19,7 @@ export default function Auth(props){
 
   function handleSignup(e){
     e.preventDefault()
+    console.log("inputs", inputs)
     signup(inputs)
   }
 
@@ -34,7 +35,7 @@ export default function Auth(props){
           <>
             <AuthForm
               handleChange={handleChange}
-              handleSubmit={handleSignup}
+              handleLogin={handleSignup}
               inputs={inputs}
               btnText="Sign up"
               errMsg={errMsg}
@@ -46,7 +47,7 @@ export default function Auth(props){
           <>
             <AuthForm
               handleChange={handleChange}
-              handleSubmit={handleLogin}
+              handleLogin={handleLogin}
               inputs={inputs}
               btnText="Login"
               errMsg={errMsg}
