@@ -5,12 +5,9 @@ const jwt = require('jsonwebtoken')
 
 const secret = process.env.SECRET || "is it secret enough"
 
-console.log("HELLO?")
 
 //Signup
 authRouter.post("/signup", (req, res, next) => {
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-  console.log('hit this route', req.body)
   User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
     console.log({user, err})
     if(err){
