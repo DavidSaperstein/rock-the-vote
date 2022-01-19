@@ -17,18 +17,18 @@ const whitelist = [
 	process.env.HEROKU_URL
 ]
 
-const corsOptions = {
-	origin: function (origin, callback) {
-		console.log("** Origin of request " + origin.headers.host)
-		if (whitelist.indexOf(origin.headers.host) !== -1 || !origin) {
-			console.log("Origin acceptable")
-			callback(null, true)
-		} else {
-			console.log("Origin rejected")
-			callback(new Error('Not allowed by CORS - ' + origin.headers.host))
-		}
-	}
-}
+// const corsOptions = {
+// 	origin: function (origin, callback) {
+// 		console.log("** Origin of request " + origin.headers.host)
+// 		if (whitelist.indexOf(origin.headers.host) !== -1 || !origin) {
+// 			console.log("Origin acceptable")
+// 			callback(null, true)
+// 		} else {
+// 			console.log("Origin rejected")
+// 			callback(new Error('Not allowed by CORS - ' + origin.headers.host))
+// 		}
+// 	}
+// }
 
 server.use(express.json())
 server.use(cors(corsOptions.origin))
