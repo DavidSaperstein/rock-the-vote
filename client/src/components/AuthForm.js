@@ -22,7 +22,7 @@ export default function AuthForm(props){
         style={{color: 'rgb(216, 218, 220)'}}
       />
       <input
-        type="text"
+        type="password"
         value={password}
         name="password"
         onChange={handleChange}
